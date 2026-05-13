@@ -1,0 +1,21 @@
+<header class="site-header">
+  <a class="logo" routerLink="/" aria-label="На главную">
+    <span class="logo__icon">🍳</span>
+    <span>Книга рецептов</span>
+  </a>
+
+  <nav class="navigation" aria-label="Главная навигация">
+    <a
+      routerLink="/"
+      routerLinkActive="navigation__link--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Главная</a
+    >
+    <a routerLink="/recipes" routerLinkActive="navigation__link--active"
+      >Рецепты</a
+    >
+    <a routerLink="/about" routerLinkActive="navigation__link--active"
+      >О проекте</a
+    >
+  </nav>
+</header>

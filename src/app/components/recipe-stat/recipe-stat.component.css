@@ -1,0 +1,17 @@
+.stat {
+  padding: 12px;
+  border-radius: 16px;
+  background: #fff8ed;
+  border: 1px solid #f0dfc4;
+}
+
+.stat__label {
+  display: block;
+  margin-bottom: 4px;
+  color: #7c6a5b;
+  font-size: 0.82rem;
+}
+
+.stat__value {
+  color: #3d3028;
+}

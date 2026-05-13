@@ -1,0 +1,48 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px max(24px, calc((100vw - 1120px) / 2));
+  background: rgba(255, 250, 240, 0.94);
+  border-bottom: 1px solid #eadfce;
+  backdrop-filter: blur(12px);
+}
+
+.logo,
+.navigation a {
+  color: #3b2f2f;
+  text-decoration: none;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.logo__icon {
+  font-size: 1.6rem;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.navigation a {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.navigation a:hover,
+.navigation__link--active {
+  background: #ffedd5;
+}

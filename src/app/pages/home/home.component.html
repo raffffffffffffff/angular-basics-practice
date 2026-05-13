@@ -1,0 +1,30 @@
+<section class="hero">
+  <div class="hero__content">
+    <p class="eyebrow">Домашняя коллекция</p>
+    <h1>Рецепты, которые легко выбрать и приятно готовить</h1>
+    <p>
+      Соберите ужин, быстрый завтрак или освежающий напиток: в приложении есть
+      карточки, подробные страницы и удобная фильтрация.
+    </p>
+    <a class="button" routerLink="/recipes">Перейти к рецептам</a>
+  </div>
+</section>
+
+<section class="section-heading">
+  <div>
+    <p class="eyebrow">Популярное</p>
+    <h2>Идеи для старта</h2>
+  </div>
+
+  @if (favoriteRecipeName) {
+    <p class="favorite-message">
+      Вы добавили в избранное: {{ favoriteRecipeName }}
+    </p>
+  }
+</section>
+
+<div class="recipe-grid">
+  @for (recipe of featuredRecipes; track recipe.id) {
+    <app-recipe-card [recipe]="recipe" (selected)="markFavorite($event)" />
+  }
+</div>

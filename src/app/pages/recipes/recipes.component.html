@@ -1,0 +1,80 @@
+<section class="page-intro">
+  <p class="eyebrow">Каталог</p>
+  <h1>Все рецепты</h1>
+  <p>
+    Используйте фильтры по названию, категории и времени приготовления, чтобы
+    быстрее найти подходящую идею.
+  </p>
+</section>
+
+<form class="filters" #filtersForm="ngForm">
+  <label>
+    <span>Название блюда</span>
+    <input
+      type="search"
+      name="searchTerm"
+      placeholder="Например, суп"
+      [(ngModel)]="searchTerm"
+    />
+  </label>
+
+  <label>
+    <span>Категория</span>
+    <select name="categoryFilter" [(ngModel)]="categoryFilter">
+      @for (category of categories; track category) {
+        <option [ngValue]="category">
+          {{ category === "all" ? "Все категории" : category }}
+        </option>
+      }
+    </select>
+  </label>
+
+  <label>
+    <span>До {{ maxCookingTime }} минут</span>
+    <input
+      type="range"
+      name="maxCookingTime"
+      min="10"
+      max="60"
+      step="5"
+      [(ngModel)]="maxCookingTime"
+    />
+  </label>
+
+  <button
+    type="button"
+    (click)="resetFilters()"
+    [disabled]="filtersForm.pristine"
+  >
+    Сбросить
+  </button>
+</form>
+
+@if (favoriteRecipeNames(); as favorites) {
+  @if (favorites.length > 0) {
+    <aside class="favorites">
+      <strong>Избранное:</strong>
+      @for (recipeName of favorites; track recipeName) {
+        <span>{{ recipeName }}</span>
+      }
+    </aside>
+  }
+}
+
+@if (filteredRecipes; as recipes) {
+  @if (recipes.length > 0) {
+    <div class="recipe-grid">
+      @for (recipe of recipes; track recipe.id) {
+        <app-recipe-card
+          [recipe]="recipe"
+          (selected)="addToFavorites($event)"
+        />
+      }
+    </div>
+  } @else {
+    <app-empty-state
+      title="Ничего не найдено"
+      message="Попробуйте изменить название, категорию или максимальное время приготовления."
+    />
+  }
+}

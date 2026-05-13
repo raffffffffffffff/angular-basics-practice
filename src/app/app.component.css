@@ -1,0 +1,6 @@
+.page-shell {
+  min-height: calc(100vh - 160px);
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
