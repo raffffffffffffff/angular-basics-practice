@@ -1,0 +1,13 @@
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px max(24px, calc((100vw - 1120px) / 2));
+  color: #6b5d54;
+  background: #2f241f;
+}
+
+.site-footer p {
+  margin: 0;
+}

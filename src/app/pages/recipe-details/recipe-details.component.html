@@ -1,0 +1,55 @@
+@if (recipe(); as recipeDetails) {
+  <article class="details">
+    <img
+      class="details__image"
+      [src]="recipeDetails.image"
+      [alt]="recipeDetails.name"
+    />
+
+    <div class="details__content">
+      <a class="back-link" routerLink="/recipes">← К списку рецептов</a>
+      <span class="category" [appCategoryHighlight]="recipeDetails.category">{{
+        recipeDetails.category
+      }}</span>
+      <h1>{{ recipeDetails.name }}</h1>
+      <p class="description">{{ recipeDetails.description }}</p>
+
+      <div class="stats-grid">
+        <app-recipe-stat
+          label="Время"
+          [value]="recipeDetails.cookingTimeMinutes | recipeTime"
+        />
+        <app-recipe-stat label="Порции" [value]="recipeDetails.servings" />
+        <app-recipe-stat label="Сложность" [value]="recipeDetails.difficulty" />
+        <app-recipe-stat
+          label="Вегетарианское"
+          [value]="recipeDetails.isVegetarian ? 'да' : 'нет'"
+        />
+      </div>
+
+      <section>
+        <h2>Ингредиенты</h2>
+        <ul class="chips-list">
+          @for (ingredient of recipeDetails.ingredients; track ingredient) {
+            <li>{{ ingredient }}</li>
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h2>Шаги приготовления</h2>
+        <ol class="steps-list">
+          @for (step of recipeDetails.steps; track step) {
+            <li>{{ step }}</li>
+          }
+        </ol>
+      </section>
+    </div>
+  </article>
+} @else {
+  <section class="not-found-card">
+    <h1>Рецепт не найден</h1>
+    <p>Возможно, ссылка устарела или такого рецепта пока нет в книге.</p>
+    <a class="button" routerLink="/recipes">Вернуться к рецептам</a>
+  </section>
+}
